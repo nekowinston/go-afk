@@ -26,12 +26,14 @@ type Options struct {
 	Text   string
 	Flavor string
 	Color  string
+	Italic bool
 }
 
 func imageGenerator(c echo.Context) error {
 	text := c.QueryParam("t")
 	flavor := c.QueryParam("f")
 	color := c.QueryParam("c")
+	italic := c.QueryParam("i")
 	if text == "" {
 		text = "Hello, World!"
 	}
@@ -48,6 +50,7 @@ func imageGenerator(c echo.Context) error {
 			Text:   text,
 			Flavor: flavor,
 			Color:  color,
+			Italic: italic != "",
 		},
 	)
 	if err != nil {

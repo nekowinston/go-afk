@@ -22,7 +22,13 @@ func TextOnImg(opt Options) (image.Image, error) {
 
 	// measure the text on a tmp context
 	dc := gg.NewContext(4096, 4096)
-	if err := dc.LoadFontFace("assets/Victor-Mono SemiBold-Nerd Font.ttf", 96); err != nil {
+	var font string
+	if opt.Italic {
+		font = "assets/Victor-Mono-Semibold-Italic-NF.ttf"
+	} else {
+		font = "assets/Victor-Mono-SemiBold-NF.ttf"
+	}
+	if err := dc.LoadFontFace(font, 96); err != nil {
 		panic(err)
 	}
 	w, h := dc.MeasureString(opt.Text)
@@ -32,7 +38,7 @@ func TextOnImg(opt Options) (image.Image, error) {
 	nh := int(h) + 100
 
 	dc = gg.NewContext(nw, nh)
-	if err := dc.LoadFontFace("assets/Victor-Mono SemiBold-Nerd Font.ttf", 96); err != nil {
+	if err := dc.LoadFontFace(font, 96); err != nil {
 		panic(err)
 	}
 	hex := f["base"].Hex
