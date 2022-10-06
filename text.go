@@ -24,7 +24,7 @@ func TextOnImg(opt Options) (image.Image, error) {
 	dc := gg.NewContext(4096, 4096)
 	var font string
 	if opt.Italic {
-		font = "assets/Victor-Mono-Semibold-Italic-NF.ttf"
+		font = "assets/Victor-Mono-SemiBold-Italic-NF.ttf"
 	} else {
 		font = "assets/Victor-Mono-SemiBold-NF.ttf"
 	}
