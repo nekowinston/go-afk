@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>go-afk</title>
+    <link href="main.css" rel="stylesheet" />
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script>
+      function update({ preview }, { flavor, color, italics, text }) {
+        var url = new URL(window.location.origin);
+        url.searchParams.append("f", flavor.toLowerCase());
+        url.searchParams.append("c", color.toLowerCase());
+        url.searchParams.append("t", text || "Hello World");
+        preview.src = url + (italics ? "&i" : "");
+      }
+    </script>
+  </head>
+  <body class="frappe min-h-screen text-text bg-base grid">
+    <div
+      class="max-w-xl mx-auto self-center text-xl"
+      x-data="{text: '', flavor: 'Frappe', color: 'Pink', italics: false}"
+    >
+      <div class="py-4">
+        <img
+          src="http://localhost:3000/?t=go-afk&i"
+          class="mx-auto"
+          x-ref="preview"
+        />
+        <p>Generate your own AFK status image for Discord (or wherever)</p>
+      </div>
+      <div class="flex gap-4 items-baseline">
+        <input
+          x-model="italics"
+          id="italicise"
+          type="checkbox"
+          class="bg-crust text-pink rounded"
+        />
+        <label for="italicise">Italicise</label>
+      </div>
+      <div></div>
+      <div class="flex justify-around">
+        <div class="flex gap-4 items-baseline">
+          <label for="color">Color</label>
+          <select id="color" x-model="color" class="bg-crust rounded">
+            <option>Rosewater</option>
+            <option>Flamingo</option>
+            <option>Pink</option>
+            <option>Mauve</option>
+            <option>Red</option>
+            <option>Maroon</option>
+            <option>Peach</option>
+            <option>Yellow</option>
+            <option>Green</option>
+            <option>Teal</option>
+            <option>Sky</option>
+            <option>Sapphire</option>
+            <option>Blue</option>
+            <option>Lavender</option>
+            <option>Text</option>
+          </select>
+        </div>
+        <div class="flex gap-4 items-baseline">
+          <label for="flavor">Flavor</label>
+          <select id="flavor" x-model="flavor" class="bg-crust rounded">
+            <option>Latte</option>
+            <option>Frappe</option>
+            <option>Macchiato</option>
+            <option>Mocha</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <label for="text">Text</label>
+        <input
+          @keyup.enter="update($refs, $data)"
+          x-model="text"
+          id="text"
+          placeholder="Your text"
+          class="bg-crust rounded focus:ring-rosewater focus:border-rosewater"
+          type="text"
+        />
+        <p class="text-center">Press enter to generate a new image.</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "@catppuccin/tailwindcss": "^0.1.0",
+    "@tailwindcss/forms": "^0.5.3",
+    "html-minify": "^0.3.2",
+    "tailwindcss": "^3.1.8"
+  },
+  "scripts": {
+    "dev": "tailwindcss -i ./main.css -o ./dist/main.css --watch",
+    "build": "tailwindcss -i ./main.css -o ./dist/main.css --minify"
+  }
+}

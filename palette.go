@@ -12,13 +12,13 @@ func UnmarshalPalette(data []byte) (Palette, error) {
 }
 
 type Palette struct {
-	Latte     map[string]Colour `json:"latte"`
-	Frappe    map[string]Colour `json:"frappe"`
-	Macchiato map[string]Colour `json:"macchiato"`
-	Mocha     map[string]Colour `json:"mocha"`
+	Latte     map[string]Color `json:"latte"`
+	Frappe    map[string]Color `json:"frappe"`
+	Macchiato map[string]Color `json:"macchiato"`
+	Mocha     map[string]Color `json:"mocha"`
 }
 
-type Colour struct {
+type Color struct {
 	Hex string `json:"hex"`
 	RGB string `json:"rgb"`
 	Hsl string `json:"hsl"`
