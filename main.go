@@ -3,17 +3,15 @@ package main
 import (
 	"embed"
 	"flag"
-	"fmt"
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
-	"golang.org/x/time/rate"
 	"io/fs"
 	"net/http"
 	"os"
 	"strconv"
-)
 
-//go:generate go tool yacc -o gopher.go -p parser gopher.y
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
+	"golang.org/x/time/rate"
+)
 
 //go:embed web/dist
 var embeddedFiles embed.FS
@@ -51,9 +49,6 @@ type Options struct {
 }
 
 func imageGenerator(c echo.Context) error {
-	const localConst = 1
-
-	fmt.Println(localConst)
 	params := c.QueryParams()
 
 	if len(params.Encode()) == 0 {
