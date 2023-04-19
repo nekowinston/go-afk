@@ -14,29 +14,28 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in {
         packages = rec {
-          afk-go = pkgs.buildGoModule rec {
-            name = "afk-go";
-            pname = "afk";
-            version = "0.1.0";
+          go-afk = pkgs.buildGo120Module rec {
+            name = "go-afk";
+            version = "0.2.0";
             src = ./.;
-            vendorSha256 = "sha256-EYBABMCGflg34QAZhm2n1ZYXBqSE7/skb0rPA/xxGN8=";
+            vendorSha256 = "sha256-UCqIn5+p2Zm7B8In5OvCVo2PvWaWLpcLa+Ya0sTiSaw=";
             ldflags = [
-              "-s -w -X github.com/nekowinston/afk-go.version=${version}"
+              "-s -w -X github.com/nekowinston/go-afk.version=${version}"
             ];
             CGO_ENABLED = 0;
 
             meta = with pkgs.lib; {
-              description = "afk-go";
+              description = "go-afk";
               homepage = "https://github.com/nekowinston/afk-go";
               license = licenses.mit;
             };
           };
-          default = afk-go;
+          default = go-afk;
         };
         devShells.default = pkgs.mkShell {buildInputs = with pkgs; [go];};
         apps = rec {
-          afk-go = flake-utils.lib.mkApp {drv = self.packages.${system}.afk-go;};
-          default = afk-go;
+          go-afk = flake-utils.lib.mkApp {drv = self.packages.${system}.go-afk;};
+          default = go-afk;
         };
       }
     );

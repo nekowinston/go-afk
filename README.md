@@ -1,4 +1,4 @@
-# afk-go
+# go-afk
 
 Rewrite of [@andreasgrafen](https://github.com/andreasgrafen)'s PHP script to
 generate AFK image banners.
@@ -13,6 +13,7 @@ The image is generated from query parameters:
 ```
 https://afk.winston.sh/?f=frappe&c=pink&t=Hello%20Gophers!&i=1
 ```
+
 - `?f=frappe`: flavour of [Catppuccin](https://github.com/catppuccin/catppuccin)
   to use for the foreground text colour.
 - `&c=pink`: colour of Catppuccin to use
